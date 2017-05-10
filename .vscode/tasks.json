@@ -1,0 +1,81 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "tasks": [
+        {
+            "taskName": "Compile Only",
+            "suppressTaskName": true,
+            "command": "nim",
+            "echoCommand": true,
+            "args": [
+                "compile",
+                "-c",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "isBuildCommand": true,
+            "problemMatcher": "$tsc-watch"
+        },
+        {
+            "taskName": "C Reference (VS2017 Community)",
+            "suppressTaskName": true,
+            "echoCommand": true,
+            "command": "vccexe",
+            "args": [
+                "--vcvarsall:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Auxiliary\\Build\\vcvarsall.bat",
+                "--command:cl.exe",
+                "--platform:x64",
+                "--verbose",
+                "/Fecref",
+                "/DUNICODE",
+                "main.c",
+                "Secur32.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/cref"
+            }
+        },
+        {
+            "taskName": "C Reference (VS2017 Enterprise)",
+            "suppressTaskName": true,
+            "echoCommand": true,
+            "command": "vccexe",
+            "args": [
+                "--vcvarsall:C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\VC\\Auxiliary\\Build\\vcvarsall.bat",
+                "--command:cl.exe",
+                "--platform:x64",
+                "--verbose",
+                "/Fecref",
+                "/DUNICODE",
+                "main.c",
+                "Secur32.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/cref"
+            }
+        },
+        {
+            "taskName": "C Reference (automatic VS)",
+            "suppressTaskName": true,
+            "echoCommand": true,
+            "command": "vccexe",
+            "args": [
+                "--command:cl.exe",
+                "--platform:x64",
+                "--verbose",
+                "/Fecref",
+                "/DUNICODE",
+                "main.c",
+                "Secur32.lib"
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}/cref"
+            }
+        }
+    ]
+}
