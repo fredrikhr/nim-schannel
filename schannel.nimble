@@ -8,4 +8,4 @@ license       = "MIT"
 # Dependencies
 
 requires "nim >= 0.16.0"
-
+requires "windowssdk >= 10.0.10240"

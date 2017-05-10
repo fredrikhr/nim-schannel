@@ -1,0 +1,2 @@
+import windowssdk / sspi
+
